@@ -30,5 +30,4 @@ class LoginPage {
     await this.companyInput.fill(company);
   }
 }
-
 module.exports = { LoginPage };
