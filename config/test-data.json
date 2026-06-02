@@ -23,6 +23,28 @@
       "desc": "Form Layout Verification"
     }
   },
+  "tableService": {
+    "searchQueries": [
+      { "id": "TC016", "keyword": "India" },
+      { "id": "TC017", "keyword": "United States" },
+      { "id": "TC018", "keyword": "United Kingdom" },
+      { "id": "TC019", "keyword": "Russia" },
+      { "id": "TC020", "keyword": "Canada" },
+      { "id": "TC021", "keyword": "UAE" },
+      { "id": "TC022", "keyword": "John" },
+      { "id": "TC023", "keyword": "Admin" },
+      { "id": "TC024", "keyword": "User" },
+      { "id": "TC025", "keyword": "Developer" },
+      { "id": "TC026", "keyword": "Tester" },
+      { "id": "TC027", "keyword": "Manager" },
+      { "id": "TC028", "keyword": "Finance" },
+      { "id": "TC029", "keyword": "Support" }
+    ],
+    "boundaryCheck": {
+      "id": "TC030",
+      "invalidKeyword": "NonExistingCountryXYZ"
+    }
+  },
   "dataService": {
     "sampleFileName": "sample_document.pdf"
   }
