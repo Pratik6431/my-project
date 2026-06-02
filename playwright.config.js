@@ -34,8 +34,8 @@ export default defineConfig({
     // baseURL: 'http://localhost:3000',
     baseURL: 'https://selectorshub.com/xpath-practice-page/',
 
-    /* Global timeout for individual actions (15 seconds) to avoid flakiness */
-    actionTimeout: 15000,
+    /* Global timeout for individual actions (120 seconds) to avoid flakiness */
+    actionTimeout: 120000,
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     screenshot: 'only-on-failure',

@@ -1,0 +1,13 @@
+{
+  "authService": {
+    "loginMatrix": [
+      { "role": "Admin", "user": "admin@selectorshub.com", "pass": "Admin@123", "company": "Wipro" },
+      { "role": "Customer", "user": "customer@selectorshub.com", "pass": "Cust@123", "company": "Google" },
+      { "role": "Guest", "user": "guest@selectorshub.com", "pass": "Guest@123", "company": "Microsoft" }
+    ],
+    "invalidCredentials": { "user": "invalid_user", "pass": "wrong_pass", "company": "InvalidCorp" }
+  },
+  "dataService": {
+    "sampleFileName": "sample_document.pdf"
+  }
+}

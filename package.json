@@ -1,15 +1,29 @@
 {
+  "$schema": "https://json.schemastore.org/package.json",
   "name": "my-project",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test:ci": "npx playwright test",
+    "allure:generate": "npx allure generate allure-results --clean -o allure-report"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Pratik6431/my-project"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Pratik6431/my-project/issues"
+  },
+  "homepage": "https://github.com/Pratik6431/my-project#readme",
   "devDependencies": {
     "@playwright/test": "^1.60.0",
-    "@types/node": "^25.9.1"
+    "@types/node": "^25.9.1",
+    "allure-commandline": "^2.42.0",
+    "allure-playwright": "^3.9.0"
   }
 }
