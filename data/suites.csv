@@ -1,0 +1,4 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","4671","TC001 - Verify successful login configuration for Admin role","firefox","2026-06-02","passed","2026-06-02","Service 1: Authentication & Profile Matrix @service1","01_Service/auth.spec.js","",""
+"","3406","TC001 - Verify successful login configuration for Admin role","chromium","2026-06-02","passed","2026-06-02","Service 1: Authentication & Profile Matrix @service1","01_Service/auth.spec.js","",""
+"","17404","TC001 - Verify successful login configuration for Admin role","webkit","2026-06-02","passed","2026-06-02","Service 1: Authentication & Profile Matrix @service1","01_Service/auth.spec.js","",""
