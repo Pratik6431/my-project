@@ -1,0 +1,6 @@
+{
+  "datasetAlpha": { "username": "PratikWipro", "role": "Project Engineer", "location": "Bangalore" },
+  "datasetBeta": { "username": "EliteUser2026", "role": "Automation Specialist", "location": "Jharkhand" },
+  "datasetGamma": { "username": "AdminSecure", "role": "QA Lead", "location": "Bokaro" },
+  "systemConfig": { "maxRetries": 2, "timeoutBaseline": 5000 }
+}

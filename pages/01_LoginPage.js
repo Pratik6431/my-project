@@ -1,5 +1,3 @@
-const { expect } = require('@playwright/test');
-
 class LoginPage {
   /**
    * @param {import('@playwright/test').Page} page
@@ -7,27 +5,30 @@ class LoginPage {
   constructor(page) {
     this.page = page;
     
-    // UI Selectors / Locators
-    this.userInput = page.locator("input[placeholder='Enter email']");
-    this.passwordInput = page.locator("input[placeholder='Enter Password']");
-    this.companyInput = page.locator("input[placeholder='Enter your company']").first();
+    this.usernameInput = page.locator('input[placeholder="Enter email"]').first(); 
+    this.passwordInput = page.locator('#pass');   
+    this.companyInput = page.locator('input[placeholder="Enter your company"]').first();
+    this.mobileInput = page.locator("input[placeholder='Enter your mobile number']").first(); 
+    this.loginButton = page.locator("button:has-text('Submit'), input[type='submit']").first(); 
   }
 
-  /**
-   * Action method to fill the login form fields
-   * @param {string} username - The user email address
-   * @param {string} password - The user security account password
-   * @param {string} company - The user company name profile
-   */
-  async loginToPortal(username, password, company) {
-    await this.userInput.click();
-    await this.userInput.fill(username);
-    
-    await this.passwordInput.click();
+  async fillUsername(text) {
+    await this.usernameInput.waitFor({ state: 'visible' });
+    // Pehle click/focus karenge taaki page ka script readonly hata de
+    await this.usernameInput.click(); 
+    await this.usernameInput.fill(text);
+  }
+
+  async waitForFormLoad() {
+    await this.usernameInput.waitFor({ state: 'visible', timeout: 10000 });
+  }
+
+  async login(username, password) {
+    await this.waitForFormLoad();
+    await this.fillUsername(username);
     await this.passwordInput.fill(password);
-    
-    await this.companyInput.click();
-    await this.companyInput.fill(company);
+    await this.loginButton.click();
   }
 }
+
 module.exports = { LoginPage };

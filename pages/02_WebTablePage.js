@@ -1,5 +1,3 @@
-const { expect } = require('@playwright/test');
-
 class WebTablePage {
   /**
    * @param {import('@playwright/test').Page} page
@@ -7,28 +5,22 @@ class WebTablePage {
   constructor(page) {
     this.page = page;
 
-    // UI Selectors / Locators for Web Table Components (Service 2: Data Grids)
-    this.tableRows = page.locator('#shub151 table tbody tr');
-    this.searchCountDropdown = page.locator("select[name='tablepress-1_length']");
-    this.tableSearchInput = page.locator("input[type='search'][aria-controls='tablepress-1']");
+    this.mainTable = page.locator('#resultTable');
+    
+    this.tableRows = this.mainTable.locator('tbody tr');
+    this.tableHeaders = this.mainTable.locator('thead th');
+
+    this.firstRowCheckbox = page.locator('#ohrmList_chkSelectRecord_21'); // First checkbox in table
+    this.secondRowCheckbox = page.locator('#ohrmList_chkSelectRecord_25'); // Second checkbox
+    this.firstRowUserLink = page.locator('tr:has-text("Garry.White") a').first();
   }
 
-  /**
-   * Action method to get the total row count visible in the data grid
-   * @returns {Promise<number>} Total number of rows found
-   */
-  async getTableRowCount() {
-    return await this.tableRows.count();
+  async waitForTableLoad() {
+    await this.mainTable.waitFor({ state: 'visible', timeout: 10000 });
   }
 
-  /**
-   * Action method to search for a specific record inside the table search box
-   * @param {string} criteria - The search keyword (e.g., Country name or Role)
-   */
-  async searchInTable(criteria) {
-    await this.tableSearchInput.waitFor({ state: 'visible' });
-    await this.tableSearchInput.clear();
-    await this.tableSearchInput.fill(criteria);
+  async getRowTextContent(index) {
+    return await this.tableRows.nth(index).textContent();
   }
 }
 
