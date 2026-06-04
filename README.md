@@ -43,23 +43,29 @@ REPOSITORY STRUCTURE
 The framework is highly organized into logical modules:
 
 ├── .github/workflows/
-│   └── playwright.yml            # Continuous Integration pipeline configuration
-├── pages/                        # Page Object Model (POM) Locator & Action classes
+│   └── playwright.yml                      # Continuous Integration pipeline configuration
+├── pages/                                  # Page Object Model (POM) Locator & Action classes
 │   ├── 01_AuthenticationPage.js
 │   ├── 02_DynamicInputsPage.js
+│   ├── 03_ShadowDomPage.js
+│   ├── 04_IframeStealthPage.js
+│   ├── 05_DropdownMenuPage.js
+│   ├── 06_ApiMockingPage.js
+│   ├── 07_DataDrivenRetriesPage.js
 │   └── 08_CustomFetchersPage.js
-├── tests/                        # Modular Test Suites (15 Test Cases per Service)
+├── tests/                                  # Modular Test Suites (15 Test Cases per Service)
 │   ├── 01_Authentication_Forms/
 │   ├── 02_Dynamic_Form_Inputs/
 │   ├── 03_Shadow_DOM_Targeting/
 │   ├── 04_Iframe_Stealth_Interactions/
 │   ├── 05_Dropdown_Menu_Matrices/
 │   ├── 06_API_Testing_Mocking/
-│   ├── 07_Data_Driven_Retries/   
+│   ├── 07_Data_Driven_Retries/             # Contains userData.json for isolated injections
 │   └── 08_Custom_Fetchers_Accessibility/
-├── playwright.config.js          # Global execution orchestration
-├── package.json                  # Dependencies and execution script mappings
-└── README.md                     # Framework documentation
+├── playwright.config.js                    # Global multi-browser & parallel execution orchestration
+├── package.json                            # Manifest file containing dependencies and scripts
+├── package-lock.json                       # Locked dependency tree for consistent environments
+└── README.md                               # Framework documentation
 
 --------------------------------------------------------------------------------
 PREREQUISITES AND INSTALLATION
