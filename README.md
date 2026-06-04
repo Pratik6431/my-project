@@ -1,36 +1,89 @@
-# 🏦 End-to-End Automated Regression Suite (Capstone Project)
+Comprehensive Playwright Automation Framework (8-Service Core)
+An enterprise-grade, end-to-end test automation framework built using Playwright and JavaScript/TypeScript, tailored for scalable web applications. This repository contains 120 robust test cases structured across 8 modular business domains (Services), following industry best practices like the Page Object Model (POM), Data-Driven Testing, and parallel cross-browser execution.
 
-> **A production-ready, highly resilient Playwright Automation Framework built using JavaScript and the Page Object Model (POM) pattern to isolate front-end UI workflows from backend architectures.**
+Key Framework Features
+Robust Architecture: Complete adherence to the Page Object Model (POM) pattern for strict separation of locators and test logic.
+
+Cross-Browser Multi-Threading: Configured to run seamlessly across Chromium, Firefox, and WebKit (Safari) engines concurrently.
+
+Data-Driven Core: Dynamic dataset isolation utilizing external JSON injections for multi-role user profile validation.
+
+Resilient Execution: Automated parameterized test-level retries and advanced wait strategies to eliminate flakiness on dynamic elements.
+
+Enterprise Reporting: Full integration with Allure Report and default Playwright HTML reporters for rich graphical analytics.
+
+CI/CD Integrated: Automated pipeline readiness using GitHub Actions workflow.
+
+Repository Structure
+The framework is highly organized into logical modules aligning with enterprise evaluation criteria:
+
+Plaintext
+├── .github/workflows/
+│   └── playwright.yml            # Continuous Integration pipeline configuration
+├── pages/                        # Page Object Model (POM) Locator & Action classes
+│   ├── 01_AuthenticationPage.js
+│   ├── 02_DynamicInputsPage.js
+│   ├── ...
+│   └── 08_CustomFetchersPage.js
+├── tests/                        # Modular Test Suites (15 Test Cases per Service)
+│   ├── 01_Authentication_Forms/
+│   ├── 02_Dynamic_Form_Inputs/
+│   ├── 03_Shadow_DOM_Targeting/
+│   ├── 04_Iframe_Stealth_Interactions/
+│   ├── 05_Dropdown_Menu_Matrices/
+│   ├── 06_API_Testing_Mocking/
+│   ├── 07_Data_Driven_Retries/   # Contains userData.json for isolated injections
+│   └── 08_Custom_Fetchers_Accessibility/
+├── playwright.config.js          # Global multi-browser & parallel execution orchestration
+├── package.json                  # Dependencies and execution script mappings
+└── README.md                     # Framework documentation
+Prerequisites & Installation
+Ensure you have Node.js installed on your machine before setting up the project.
+
+Clone the Repository:
+
+Bash
+git clone https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
+cd YOUR_REPO_NAME
+
+2. **Install Core Dependencies:**
+   ```bash
+npm install
+Install Playwright Browsers:
+
+npx playwright install
+
 
 ---
 
-## Project Overview
-This capstone project implements a robust, zero-flakiness automation suite targeting complex web components such as Dynamic Tables, nested Iframes, and Shadow DOM elements. The framework is structured into **8 core micro-services**, containing a total of **120 modular test cases** designed for parallel multi-browser execution and pipeline readiness.
+## Test Execution Matrix
 
-### Target Application
-* **Application URL:** [SelectorsHub Practice Page](https://selectorshub.com/xpath-practice-page/)
-* **Architecture Choice:** 100% independent single-page ecosystem with high infrastructure uptime to guarantee flake-free pipeline runs.
+### 1. Run the Entire Suite (360 Test Combinations across 3 Browsers)
+```bash
+npx playwright test
+2. Fast Targeted Execution (Chromium Headless - Recommended)
+Bash
+npx playwright test --project=chromium
+3. Running a Specific Service (e.g., Service 6 on WebKit only)
+Bash
+npx playwright test tests/06_API_Testing_Mocking/06_apiMocking.spec.js --project=webkit --headed
+Test Analytics & Reports
+The framework records comprehensive execution logs and screenshots on test failures.
 
----
+Interactive Allure Dashboards
+To generate and view the interactive, visual Allure analytics dashboard locally:
 
-## Framework Architecture Diagram
-Below is the strict Page Object Model (POM) data-driven architectural flow utilized in this suite:
+Clean old cached traces and spin the dashboard:
 
-```text
-┌──────────────────────────────────────────────────────────────────┐
-│                      config/test-data.json                       │
-│           (Externalized JSON Datasets - Data Driven)             │
-└────────────────────────────────┬─────────────────────────────────┘
-                                 │ (Injects Data)
-                                 ▼
-┌──────────────────────────────────────────────────────────────────┐
-│                          tests/*.spec.js                         │
-│       (Parameterized Executions & Network Interceptions)         │
-└────────────────────────────────┬─────────────────────────────────┘
-                                 │ (Calls Actions / Assertions)
-                                 ▼
-┌──────────────────────────────────────────────────────────────────┐
-│                          pages/*.page.js                         │
-│            (Isolated Selectors & Web Action Methods)             │
-└──────────────────────────────────────────────────────────────────┘
+Bash
+npx allure serve allure-results
 
+2. **Generate a static build report:**
+   ```bash
+   npx allure generate allure-results --clean && npx allure open
+The report breaks down execution history, test suite behaviors, flaky retry paths, and visual failure attachments.
+
+Security & Industry Standards
+Zero Credential Leaking: Built to absorb dynamic environment bindings. Fully compliant with enterprise security mandates by removing hardcoded sensitive vectors.
+
+Optimal Resource Allocation: Fine-tuned to use optimized hardware worker threads, balancing continuous integration speed without throttling memory buffers or processor boundaries.
