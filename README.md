@@ -1,29 +1,52 @@
-Comprehensive Playwright Automation Framework (8-Service Core)
-An enterprise-grade, end-to-end test automation framework built using Playwright and JavaScript/TypeScript, tailored for scalable web applications. This repository contains 120 robust test cases structured across 8 modular business domains (Services), following industry best practices like the Page Object Model (POM), Data-Driven Testing, and parallel cross-browser execution.
+<pre>
+================================================================================
+COMPREHENSIVE PLAYWRIGHT AUTOMATION FRAMEWORK (8-SERVICE CORE)
+================================================================================
 
-Key Framework Features
-Robust Architecture: Complete adherence to the Page Object Model (POM) pattern for strict separation of locators and test logic.
+An enterprise-grade, end-to-end test automation framework built using Playwright 
+and JavaScript/TypeScript. This repository contains 120 robust test cases 
+structured across 8 modular business domains, following industry best practices 
+like the Page Object Model (POM), Data-Driven Testing, and parallel cross-browser 
+execution.
 
-Cross-Browser Multi-Threading: Configured to run seamlessly across Chromium, Firefox, and WebKit (Safari) engines concurrently.
+--------------------------------------------------------------------------------
+KEY FRAMEWORK FEATURES
+--------------------------------------------------------------------------------
 
-Data-Driven Core: Dynamic dataset isolation utilizing external JSON injections for multi-role user profile validation.
+* Robust Architecture
+  Complete adherence to the Page Object Model (POM) pattern for strict separation 
+  of locators and test logic.
 
-Resilient Execution: Automated parameterized test-level retries and advanced wait strategies to eliminate flakiness on dynamic elements.
+* Cross-Browser Multi-Threading
+  Configured to run seamlessly across Chromium, Firefox, and WebKit (Safari) 
+  engines concurrently.
 
-Enterprise Reporting: Full integration with Allure Report and default Playwright HTML reporters for rich graphical analytics.
+* Data-Driven Core
+  Dynamic dataset isolation utilizing external JSON injections for multi-role 
+  user profile validation.
 
-CI/CD Integrated: Automated pipeline readiness using GitHub Actions workflow.
+* Resilient Execution
+  Automated parameterized test-level retries and advanced wait strategies to 
+  eliminate flakiness on dynamic elements.
 
-Repository Structure
-The framework is highly organized into logical modules aligning with enterprise evaluation criteria:
+* Enterprise Reporting
+  Full integration with Allure Report and default Playwright HTML reporters 
+  for rich graphical analytics.
 
-Plaintext
+* CI/CD Integrated
+  Automated pipeline readiness using GitHub Actions workflow.
+
+--------------------------------------------------------------------------------
+REPOSITORY STRUCTURE
+--------------------------------------------------------------------------------
+
+The framework is highly organized into logical modules:
+
 ├── .github/workflows/
 │   └── playwright.yml            # Continuous Integration pipeline configuration
 ├── pages/                        # Page Object Model (POM) Locator & Action classes
 │   ├── 01_AuthenticationPage.js
 │   ├── 02_DynamicInputsPage.js
-│   ├── ...
 │   └── 08_CustomFetchersPage.js
 ├── tests/                        # Modular Test Suites (15 Test Cases per Service)
 │   ├── 01_Authentication_Forms/
@@ -32,58 +55,70 @@ Plaintext
 │   ├── 04_Iframe_Stealth_Interactions/
 │   ├── 05_Dropdown_Menu_Matrices/
 │   ├── 06_API_Testing_Mocking/
-│   ├── 07_Data_Driven_Retries/   # Contains userData.json for isolated injections
+│   ├── 07_Data_Driven_Retries/   
 │   └── 08_Custom_Fetchers_Accessibility/
-├── playwright.config.js          # Global multi-browser & parallel execution orchestration
+├── playwright.config.js          # Global execution orchestration
 ├── package.json                  # Dependencies and execution script mappings
 └── README.md                     # Framework documentation
-Prerequisites & Installation
+
+--------------------------------------------------------------------------------
+PREREQUISITES AND INSTALLATION
+--------------------------------------------------------------------------------
+
 Ensure you have Node.js installed on your machine before setting up the project.
 
-Clone the Repository:
+1. Clone the Repository
+   git clone https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
+   cd YOUR_REPO_NAME
 
-Bash
-git clone https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
-cd YOUR_REPO_NAME
+2. Install Core Dependencies
+   npm install
 
-2. **Install Core Dependencies:**
-   ```bash
-npm install
-Install Playwright Browsers:
+3. Install Playwright Browsers
+   npx playwright install
 
-npx playwright install
+--------------------------------------------------------------------------------
+TEST EXECUTION MATRIX
+--------------------------------------------------------------------------------
 
+1. Run the Entire Suite (360 Test Combinations across 3 Browsers)
+   npx playwright test
 
----
-
-## Test Execution Matrix
-
-### 1. Run the Entire Suite (360 Test Combinations across 3 Browsers)
-```bash
-npx playwright test
 2. Fast Targeted Execution (Chromium Headless - Recommended)
-Bash
-npx playwright test --project=chromium
+   npx playwright test --project=chromium
+
 3. Running a Specific Service (e.g., Service 6 on WebKit only)
-Bash
-npx playwright test tests/06_API_Testing_Mocking/06_apiMocking.spec.js --project=webkit --headed
-Test Analytics & Reports
-The framework records comprehensive execution logs and screenshots on test failures.
+   npx playwright test tests/06_API_Testing_Mocking/06_apiMocking.spec.js --project=webkit --headed
 
-Interactive Allure Dashboards
-To generate and view the interactive, visual Allure analytics dashboard locally:
+--------------------------------------------------------------------------------
+TEST ANALYTICS AND REPORTS
+--------------------------------------------------------------------------------
 
-Clean old cached traces and spin the dashboard:
+The framework records comprehensive execution logs and screenshots on failures.
 
-Bash
-npx allure serve allure-results
+* Interactive Allure Dashboards
+  To generate and view the interactive analytics dashboard locally:
 
-2. **Generate a static build report:**
-   ```bash
-   npx allure generate allure-results --clean && npx allure open
-The report breaks down execution history, test suite behaviors, flaky retry paths, and visual failure attachments.
+  1. Clean old cached traces and spin the dashboard:
+     npx allure serve allure-results
 
-Security & Industry Standards
-Zero Credential Leaking: Built to absorb dynamic environment bindings. Fully compliant with enterprise security mandates by removing hardcoded sensitive vectors.
+  2. Generate a static build report:
+     npx allure generate allure-results --clean && npx allure open
 
-Optimal Resource Allocation: Fine-tuned to use optimized hardware worker threads, balancing continuous integration speed without throttling memory buffers or processor boundaries.
+  The report breaks down execution history, test suite behaviors, flaky retry 
+  paths, and visual failure attachments.
+
+--------------------------------------------------------------------------------
+SECURITY AND INDUSTRY STANDARDS
+--------------------------------------------------------------------------------
+
+* Zero Credential Leaking
+  Built to absorb dynamic environment bindings. Fully compliant with enterprise 
+  security mandates by removing hardcoded sensitive vectors.
+
+* Optimal Resource Allocation
+  Fine-tuned to use optimized hardware worker threads, balancing continuous 
+  integration speed without throttling memory buffers or processor boundaries.
+
+================================================================================
+</pre>
