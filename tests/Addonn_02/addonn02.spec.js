@@ -1,5 +1,5 @@
 const { test, expect } = require('@playwright/test');
-const { FetcherAccessibilityPage } = require('../../pages/08_FetcherAccessibilityPage');
+const { FetcherAccessibilityPage } = require('../../pages/AddOnn_02');
 
 test.describe('Service 8: Custom Network Fetchers & Accessibility Validation Engine', () => {
 

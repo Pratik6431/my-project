@@ -1,5 +1,5 @@
 const { test, expect } = require('@playwright/test');
-const { ApiMockingPage } = require('../../pages/06_ApiMockingPage');
+const { ApiMockingPage } = require('../../pages/AddOnn_01');
 
 test.describe('Service 6: API Testing & Network Mocking Module', () => {
 
