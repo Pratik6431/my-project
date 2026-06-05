@@ -14,7 +14,6 @@ class LoginPage {
 
   async fillUsername(text) {
     await this.usernameInput.waitFor({ state: 'visible' });
-    // Pehle click/focus karenge taaki page ka script readonly hata de
     await this.usernameInput.click(); 
     await this.usernameInput.fill(text);
   }

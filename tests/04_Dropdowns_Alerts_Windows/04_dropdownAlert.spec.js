@@ -18,7 +18,6 @@ test.describe('Service 4: Dropdowns, Dialogs & Window Lifecycle Module', () => {
     const actionPage = new DropdownAlertPage(page);
     await actionPage.waitForDropdownVisible();
     
-    // Syllabus: Selection by string value
     await actionPage.carDropdown.selectOption('volvo');
     await expect(actionPage.carDropdown).toHaveValue('volvo');
   });
@@ -27,7 +26,6 @@ test.describe('Service 4: Dropdowns, Dialogs & Window Lifecycle Module', () => {
     const actionPage = new DropdownAlertPage(page);
     await actionPage.waitForDropdownVisible();
     
-    // Syllabus: Selection by visible label
     await actionPage.carDropdown.selectOption({ label: 'Saab' });
     await expect(actionPage.carDropdown).toHaveValue('saab');
   });
@@ -36,8 +34,7 @@ test.describe('Service 4: Dropdowns, Dialogs & Window Lifecycle Module', () => {
     const actionPage = new DropdownAlertPage(page);
     await actionPage.waitForDropdownVisible();
     
-    // Syllabus: Selection by numerical index position
-    await actionPage.carDropdown.selectOption({ index: 2 }); // Targets 3rd element (Opel/Mercedes variant)
+    await actionPage.carDropdown.selectOption({ index: 2 });
     const selectedValue = await actionPage.carDropdown.inputValue();
     expect(selectedValue).not.toBeNull();
   });
@@ -47,7 +44,7 @@ test.describe('Service 4: Dropdowns, Dialogs & Window Lifecycle Module', () => {
     
     page.on('dialog', async dialog => {
       expect(dialog.type()).toBeDefined();
-      await dialog.dismiss(); // Safe cleanup dismissal
+      await dialog.dismiss();
     });
     
     const pageTitle = await page.title();
@@ -61,12 +58,11 @@ test.describe('Service 4: Dropdowns, Dialogs & Window Lifecycle Module', () => {
       dialog.accept();
     });
     
-    expect(dialogTriggered).toBe(false); // Default state before runtime user triggers
+    expect(dialogTriggered).toBe(false);
   });
 
   // --- 3. CHILD WINDOWS & DYNAMIC MULTI-TABS MANAGEMENT ---
   test('DD_07 - Verify multi-tab trigger listener initialization upon system anchor interaction', async ({ page }) => {
-    // Syllabus: Catching dynamic popup window context arrays asynchronously
     const popupPromise = page.waitForEvent('popup').catch(() => null);
     expect(popupPromise).toBeDefined();
   });
@@ -74,14 +70,13 @@ test.describe('Service 4: Dropdowns, Dialogs & Window Lifecycle Module', () => {
   test('DD_08 - Verify safe detachment mapping for background worker context links', async ({ page }) => {
     const currentContext = page.context();
     const totalOpenPages = currentContext.pages().length;
-    expect(totalOpenPages).toBe(1); // Initially only the primary base page is running
+    expect(totalOpenPages).toBe(1);
   });
 
   // --- 4. HARD & SOFT VALUE ASSERTION ENGINES ---
   test('DD_09 - Verify strict configuration via hard attribute equivalence mapping', async ({ page }) => {
     const actionPage = new DropdownAlertPage(page);
     const elementTagName = await actionPage.carDropdown.evaluate(el => el.tagName);
-    // Hard Assertion: Blocks immediate workflow sequence if expected condition fails
     expect(elementTagName.toLowerCase()).toBe('select');
   });
 
@@ -100,7 +95,7 @@ test.describe('Service 4: Dropdowns, Dialogs & Window Lifecycle Module', () => {
     await expect(actionPage.carDropdown).toHaveValue('audi');
     
     await actionPage.carDropdown.selectOption('volvo');
-    await expect(actionPage.carDropdown).toHaveValue('volvo'); // Verifies new override replaces old state
+    await expect(actionPage.carDropdown).toHaveValue('volvo');
   });
 
   test('DD_12 - Verify attribute list properties count inside web native select structures', async ({ page }) => {

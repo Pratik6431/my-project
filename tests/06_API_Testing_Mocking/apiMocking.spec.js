@@ -40,7 +40,6 @@ test.describe('Service 6: API Testing & Network Mocking Module', () => {
   // --- 2. STATE MODIFICATIONS & DELETIONS (PUT/DELETE) ---
   test('API_03 - Verify absolute record state update tracking using HTTP PUT mockup tracking', async ({ page }) => {
     const mockPage = new ApiMockingPage(page);
-    // Setting up clear routing parameters to eliminate json parsing errors
     await mockPage.mockUserApiResponse(200, { name: 'Pratik', job: 'Automation Lead' });
 
     const response = await page.evaluate(async (url) => {
